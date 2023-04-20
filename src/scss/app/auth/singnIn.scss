@@ -1,0 +1,99 @@
+.Sign-in {
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .SignInInner {
+        height: 500px;
+        width: 360px;
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 24px;
+        position: relative;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .ImageLogin {
+        position: absolute;
+        top: -25%;
+        height: 40%;
+        width: 100%;
+        overflow: hidden;
+        left: 0;
+        right: 0;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+
+    }
+
+    .form-check-label {
+        text-align: inherit;
+    }
+
+    .ImageSignUp {
+        position: absolute;
+        top: -20%;
+        height: 40%;
+        width: 100%;
+        overflow: hidden;
+        left: 0;
+        right: 0;
+
+        img {
+            border-radius: 50%;
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .ButtonSubmit {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 1.6rem;
+    }
+
+    .SignInPlatform {
+        list-style-type: none;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        height: 15%;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+
+        img {
+            height: 70px;
+            width: 70px;
+            object-fit: contain;
+        }
+
+        .SignInOption {
+            cursor: pointer;
+        }
+
+
+    }
+
+    .SignUpBtn {
+        font-weight: 500;
+        color: #347ff9;
+        margin: 0;
+        cursor: pointer;
+    }
+
+    h1 {
+        text-align: center;
+        font-weight: 600;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}

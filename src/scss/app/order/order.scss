@@ -1,0 +1,79 @@
+.OrderItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.ImageOrderItem {
+    height: 60px;
+    width: 70px;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+}
+
+.TitleProduct {
+    flex-grow: 1;
+}
+
+.IconAction {
+    cursor: pointer;
+}
+
+.ModalOrderContent,
+.ModalOrderStatus,
+.ModalOrderItem {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.ModalNoteStatus{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 20px;
+ 
+}
+.NoteStatus {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+   
+    position: relative;
+    background-color: aquamarine;
+}
+
+.loader{
+    height: 10px;
+    border-radius: 40px;
+    width: 190px;
+    height: 10px;
+    border-radius: 40px;
+    background-color: rgba(255, 255, 255, 1);
+}
+.NameNodeStatus{
+    position: absolute;
+    white-space: nowrap;
+    bottom: -110%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ItemProduct{
+    display: flex;
+    gap: 10px;
+
+}
+.ImageProduct{
+    height: 100px;
+    width: 140px;
+    img{
+        height: 100%;width: 100%;
+        object-fit: contain;
+    }
+}

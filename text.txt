@@ -1,0 +1,5 @@
+cloudinary.config({
+  cloud_name: "dfmnriiwu",
+  api_key: "183145767373534",
+  api_secret: "LwRQJY7FrZPurt5ElL4nvoJuAok"
+});
