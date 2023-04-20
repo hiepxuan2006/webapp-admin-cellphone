@@ -1,6 +1,6 @@
 import createAPIServices from "./createApiServices"
 
-const baseUrl = "http://localhost:5005/slider/"
+const baseUrl = `${process.env.REACT_APP_BASE_URL}/slider`
 
 const api = createAPIServices({ baseUrl })
 export const createSlider = (data) => {

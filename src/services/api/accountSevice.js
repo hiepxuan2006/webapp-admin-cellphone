@@ -1,6 +1,6 @@
 import createAPIServices from "./createApiServices"
 
-const baseUrl = "http://localhost:5005/account"
+const baseUrl = `${process.env.REACT_APP_BASE_URL}/account`
 
 const api = createAPIServices({ baseUrl })
 

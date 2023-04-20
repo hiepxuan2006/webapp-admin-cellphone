@@ -60,7 +60,7 @@ const createAPIServices = (_options = {}) => {
     makeAuthRequest: _makeAuthRequest(instance),
   }
 }
-const baseUrl = "http://localhost:5005"
+const baseUrl = `${process.env.REACT_APP_BASE_URL}`
 const api = createAPIServices({ baseUrl })
 export const uploadImage = (data, path) => {
   return api.makeRequest({
