@@ -24,7 +24,7 @@ export const InvoiceOrder = ({ order = {} }) => {
       <FontAwesomeIcon className="IconAction text-warning" icon={faPrint} />
       <p>Print invoice</p>
       <div style={{ display: "none" }}>
-        {order && (
+        {Object.keys(order).length > 0 && (
           <div className="ReactPdfPrint" ref={componentRef}>
             <div className="InvoiceOrder">
               <div className="InvoiceHeader">
@@ -56,7 +56,7 @@ export const InvoiceOrder = ({ order = {} }) => {
                     <div className="col col-md-12">
                       <h1 className="mt-3">Shipping address</h1>
                       <p>{order.name}</p>
-                      <p>{hideLastThreeDigits(order?.phone_number)}</p>
+                      <p>{hideLastThreeDigits(order.phone_number)}</p>
                       <p>{order.shipping_address}</p>
                     </div>
                   </div>
