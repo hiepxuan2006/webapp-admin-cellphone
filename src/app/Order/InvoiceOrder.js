@@ -24,7 +24,7 @@ export const InvoiceOrder = ({ order = {} }) => {
       <FontAwesomeIcon className="IconAction text-warning" icon={faPrint} />
       <p>Print invoice</p>
       <div style={{ display: "none" }}>
-        {user && (
+        {order && (
           <div className="ReactPdfPrint" ref={componentRef}>
             <div className="InvoiceOrder">
               <div className="InvoiceHeader">
