@@ -6,7 +6,7 @@ import { useReactToPrint } from "react-to-print"
 import { formattedNumber } from "../../helpers/formatCurentcy"
 import moment from "moment"
 const logo = require("../../assets/shop.jpg")
-export const InvoiceOrder = ({ order }) => {
+export const InvoiceOrder = ({ order = {} }) => {
   const componentRef = useRef()
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -35,11 +35,11 @@ export const InvoiceOrder = ({ order }) => {
               <div className="InvoiceHeaderHeading">
                 <div className="d-flex">
                   <p style={{ minWidth: "100px" }}>Invoice</p>
-                  <p>:{order.order_code}</p>
+                  <p>:{order?.order_code}</p>
                 </div>
                 <div className="d-flex">
                   <p style={{ minWidth: "100px" }}>Order date</p>
-                  <p>:{moment(order.order_at).format("LTS L")}</p>
+                  <p>:{moment(order?.order_at).format("LTS L")}</p>
                 </div>
               </div>
               <div className="InvoiceBodyInfo">
@@ -55,7 +55,7 @@ export const InvoiceOrder = ({ order }) => {
                   <div className="col col-md-12">
                     <h1 className="mt-3">Shipping address</h1>
                     <p>{order.name}</p>
-                    <p>{hideLastThreeDigits(order.phone_number)}</p>
+                    <p>{hideLastThreeDigits(order?.phone_number)}</p>
                     <p>{order.shipping_address}</p>
                   </div>
                 </div>
