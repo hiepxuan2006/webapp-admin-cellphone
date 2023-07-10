@@ -6,7 +6,7 @@ import BarChart from "../../helpers/BarChart"
 
 export const ChartOrder = () => {
   const [data, setData] = useState([])
-  const [userData, setUserData] = useState()
+  const [userData, setUserData] = useState({})
   const _getAnalyticOrder = async () => {
     const { success, data, message } = await analyticOrder()
     if (!success) {
@@ -40,9 +40,5 @@ export const ChartOrder = () => {
         ],
       })
   }, [data])
-  return (
-    <div>
-      <BarChart chartData={userData} />
-    </div>
-  )
+  return <div>{data.length && <BarChart chartData={userData} />}</div>
 }
