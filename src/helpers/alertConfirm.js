@@ -2,8 +2,10 @@ import Swal from "sweetalert2"
 
 export const confirmDialog = async (data) => {
   let kq
+  const { title } = data
+
   await Swal.fire({
-    title: "Bạn chắc chăn?",
+    title: `Bạn chắc chăn ${title}?`,
     text: "Đồng ý nếu bạn chắc chắn!",
     icon: "warning",
     showCancelButton: true,

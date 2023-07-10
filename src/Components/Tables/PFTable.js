@@ -1,7 +1,7 @@
 const PFTable = ({ children }) => {
   return (
     <div className="PFTable">
-      <table className="table  table-hover">{children}</table>
+      <table className="table">{children}</table>
     </div>
   )
 }

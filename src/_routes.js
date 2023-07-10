@@ -7,6 +7,7 @@ import CreateCategory from "./app/category/createCategory/CreateCategory"
 import { EditCategory } from "./app/category/editCategory/EditCategory"
 import { DashboardHome } from "./app/dashboard/DashboardHome"
 import { KeyWord } from "./app/keyword/KeyWord"
+import { InvoiceOrder } from "./app/Order/InvoiceOrder"
 import { Order } from "./app/Order/Order"
 import { OrderDetail } from "./app/Order/OrderDetail"
 import { CreateNewPost } from "./app/Post/CreateNewPost"
@@ -25,7 +26,7 @@ const routes = [
     type: "collapse",
     name: "Sign Up",
     key: "sign-up",
-    route: "/product",
+    route: "/product/all",
     layout: "admin",
     component: <ProductContainer />,
   },
@@ -101,14 +102,17 @@ const routes = [
     layout: "admin",
     component: <EditSlider />,
   },
+  // order
+
   {
     type: "collapse",
     name: "Order",
     key: "order",
-    route: "/order",
+    route: "/order/:order_status",
     layout: "admin",
     component: <Order />,
   },
+
   {
     type: "collapse",
     name: "Order",
@@ -117,6 +121,8 @@ const routes = [
     layout: "admin",
     component: <OrderDetail />,
   },
+
+  //
   {
     type: "collapse",
     name: "Post",

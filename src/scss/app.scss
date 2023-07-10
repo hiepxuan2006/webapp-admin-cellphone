@@ -1,5 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
+@import 'bootstrap/dist/css/bootstrap.css';
 @import './variable';
+@import './component.scss';
 @import './Pagination';
 @import './app/';
 @import './app//loading.scss';

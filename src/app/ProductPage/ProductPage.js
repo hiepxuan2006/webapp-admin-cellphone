@@ -25,6 +25,7 @@ const ProductContainer = () => {
   const [loading, setLoading] = useState(false)
   const [categories, setCategories] = useState([])
   const [productChose, setProductChose] = useState([])
+  const [isReload, setReload] = useState(false)
   let timer = null
 
   const _getProducts = async () => {
@@ -57,7 +58,7 @@ const ProductContainer = () => {
   }, [])
   useEffect(() => {
     _getProducts()
-  }, [page, limit, title])
+  }, [page, limit, title, isReload])
   const _handleChangePage = (page) => {
     setPage(page)
   }
@@ -87,7 +88,7 @@ const ProductContainer = () => {
   }
   return (
     <div className="ProductPage">
-      <div className="ProductPageHeader d-flex gap-5 mb-4 ">
+      <div className="ProductPageHeader d-flex gap-5 SectionInner">
         <h1>Products</h1>
         <Link to={"/a/admin/key_word"}>
           <button className="px-2">Key word</button>
@@ -157,7 +158,7 @@ const ProductContainer = () => {
               className="form-control"
               id="SearchTitleProductMockup"
               name="title"
-              placeholder="Enter search product mockup ..."
+              placeholder="Enter search product..."
             />
             <FontAwesomeIcon icon={faSearch} className="SearchIcon" />
           </div>
@@ -176,6 +177,8 @@ const ProductContainer = () => {
               products={products}
               productChose={productChose}
               setProductChose={setProductChose}
+              setReload={setReload}
+              isReload={isReload}
             />
           </PFTable>
           <PFPagePagination

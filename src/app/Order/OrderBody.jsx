@@ -1,13 +1,20 @@
 import React from "react"
 import { formattedNumber } from "../../helpers/formatCurentcy"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons"
+import {
+  faEdit,
+  faEye,
+  faPrint,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons"
 import moment from "moment"
-import { Button, Form, Modal } from "react-bootstrap"
+import { Button, Dropdown, Form, Modal } from "react-bootstrap"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import TableLoading from "../../helpers/TableLoading"
+import { InvoiceOrder } from "./InvoiceOrder"
 
-export const OrderBody = ({ orders = [] }) => {
+export const OrderBody = ({ orders = [], loading }) => {
   const [show, setShow] = useState(false)
   const [itemOrder, setItemOrder] = useState("")
   const handleClose = () => {
@@ -16,60 +23,77 @@ export const OrderBody = ({ orders = [] }) => {
   console.log(orders)
   return (
     <>
-      {orders.length > 0 &&
+      {!loading ? (
+        orders.length > 0 &&
         orders.map((item, key) => {
           return (
-            <tr key={key}>
-              <td>{item.name}</td>
-              <td>{item.shipping_address}</td>
-              <td>
-                {item.order_item.map((item, key) => {
-                  return (
-                    <div className="OrderItem ">
-                      <div className="ImageOrderItem">
-                        <img
-                          src={item.product_variant_id.image_uris[0]}
-                          alt=""
+            <tbody key={key}>
+              <tr>
+                <td>{item.order_code}</td>
+                <td>
+                  {item.order_item.map((item, key) => {
+                    return (
+                      <div key={key} className="OrderItem ">
+                        <div className="ImageOrderItem">
+                          <img src={item.image_uris[0]} alt="" />
+                        </div>
+                        <div className="TitleProduct">
+                          <p>{item.product_variant_id.title}</p>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </td>
+                <td>{formattedNumber(item.price_total)} </td>
+                <td>{item.name}</td>
+                <td>
+                  <p>
+                    <span className="StatusOrder">{item.status}</span>
+                  </p>
+                </td>
+                <td>{item.shipping_address}</td>
+                <td>{moment(item.order_at).format("LTS L")}</td>
+                <td>
+                  <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      Actions
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Link
+                        to={`/a/admin/order/${item.order_code}/edit`}
+                        className="DropdownItem"
+                      >
+                        <FontAwesomeIcon
+                          className="IconAction "
+                          icon={faEdit}
                         />
+                        <p>Edit</p>
+                      </Link>
+                      <div
+                        className="DropdownItem"
+                        onClick={() => {
+                          setItemOrder(item)
+                          setShow(true)
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          className="IconAction text-warning"
+                          icon={faEye}
+                        />
+                        <p>View</p>
                       </div>
-                      <div className="TitleProduct">
-                        <p>{item.product_variant_id.title}</p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </td>
-              <td>{formattedNumber(item.price_total)} </td>
-              <td>
-                <Form.Select aria-label="Default select example">
-                  <option selected={item.status === "processing"} value="1">
-                    Chờ xác nhận
-                  </option>
-                  <option value="2">Đã xác nhận</option>
-                  <option value="3">Đang giao hàng</option>
-                  <option value="3">Đã giao hàng</option>
-                  <option value="3">Hủy đơn hàng</option>
-                </Form.Select>
-              </td>
-              <td>{moment(item.order_at).format("LTS L")}</td>
-              <td>
-                <div className="h-100 d-flex justify-content-center gap-5 align-items-center">
-                  <FontAwesomeIcon
-                    className="IconAction text-warning"
-                    icon={faEye}
-                    onClick={() => {
-                      setItemOrder(item)
-                      setShow(true)
-                    }}
-                  />
-                  <Link to={`/a/admin/order/${item.order_code}/edit`}>
-                    <FontAwesomeIcon className="IconAction " icon={faTrash} />
-                  </Link>
-                </div>
-              </td>
-            </tr>
+                      <InvoiceOrder order={item} />
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </td>
+              </tr>
+            </tbody>
           )
-        })}
+        })
+      ) : (
+        <TableLoading columnQuantity={7} />
+      )}
       {itemOrder && (
         <Modal size="lg" show={show} onHide={handleClose}>
           <Modal.Header closeButton>

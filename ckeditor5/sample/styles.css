@@ -96,7 +96,7 @@ body[data-editor='DecoupledDocumentEditor'] .sidebar {
 	position: relative;
 	min-width: var(--ck-sample-sidebar-width);
 	max-width: var(--ck-sample-sidebar-width);
-	font-size: 20px;
+	font-size: 14px;
 	border: 1px solid hsl(0, 0%, 77%);
 	background: hsl(0, 0%, 98%);
 	border-left: 0;
@@ -349,7 +349,7 @@ body, html {
 	margin: 0;
 
 	font-family: sans-serif, Arial, Verdana, "Trebuchet MS", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 1.5;
 }
 
@@ -375,7 +375,7 @@ header .centered {
 }
 
 header h1 a {
-	font-size: 20px;
+	font-size: 14px;
 	display: flex;
 	align-items: center;
 	color: #2D3A4A;

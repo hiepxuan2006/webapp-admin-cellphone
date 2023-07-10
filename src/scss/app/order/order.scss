@@ -31,24 +31,25 @@
     border-bottom: 1px solid #ccc;
 }
 
-.ModalNoteStatus{
+.ModalNoteStatus {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     padding-bottom: 20px;
- 
+
 }
+
 .NoteStatus {
     height: 20px;
     width: 20px;
     border-radius: 50%;
-   
+
     position: relative;
     background-color: aquamarine;
 }
 
-.loader{
+.loader {
     height: 10px;
     border-radius: 40px;
     width: 190px;
@@ -56,7 +57,8 @@
     border-radius: 40px;
     background-color: rgba(255, 255, 255, 1);
 }
-.NameNodeStatus{
+
+.NameNodeStatus {
     position: absolute;
     white-space: nowrap;
     bottom: -110%;
@@ -64,16 +66,141 @@
     transform: translateX(-50%);
 }
 
-.ItemProduct{
+.ItemProduct {
     display: flex;
     gap: 10px;
 
 }
-.ImageProduct{
+
+.StatusOrder {
+    text-transform: capitalize;
+    color: #40df70;
+    font-weight: 600;
+    background-color: #b0efc344;
+    border-radius: 2px;
+    padding: 4px;
+}
+
+.FilterOrder {
+    font-size: 14px;
+}
+
+// ///////////order detail
+.OrderDetail {
+    overflow-x: hidden;
+}
+
+.OrderPaid {
+    background-color: #c4f1d1c7;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.Paid {
+    color: #40df70;
+}
+
+.Unpaid {
+    color: red;
+}
+
+.OrderDetailHeading {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+}
+
+.OrderAt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.OrderDetailNote {
     height: 100px;
-    width: 140px;
-    img{
-        height: 100%;width: 100%;
-        object-fit: contain;
+}
+
+.ItemProductOrder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.PriceItems {
+    p {
+        width: 150px;
+        text-align: right;
     }
+}
+
+// //////invoice
+
+.InvoiceOrder {
+    width: 90%;
+    height: 100%;
+    border: 1px solid #ccc;
+    margin: 4px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.InvoiceHeader {
+    border-bottom: 1px solid #ccc;
+    padding: 4px;
+
+}
+
+.InvoiceHeaderLogo {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.InvoiceHeaderHeading {
+    font-weight: 700;
+    padding:4px;
+}
+
+.InvoiceOrderBody {
+    border-bottom: 1px solid #ccc;
+}
+
+.InvoiceBodyInfo {
+    padding: 4px;
+
+    h1 {
+        font-size: 16px;
+        font-weight: 700;
+    }
+}
+
+.InvoiceOrderItem{
+    display: flex;
+    gap: 20px;
+    padding: 4px;
+}
+.InvoicePrice{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.InvoicePriceItem{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+    padding-right: 10px;
+    p{
+        min-width: 150px;
+        text-align: right;
+    }
+    margin-bottom: 10px;
+}
+.InvoiceFooter{
+    text-align: center;
+    margin-top: auto;
 }

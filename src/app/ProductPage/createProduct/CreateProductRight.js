@@ -6,6 +6,7 @@ import { Input } from "reactstrap"
 import Select from "react-select"
 import { getTags } from "../../../services/api/productService"
 import { useEffect } from "react"
+import { Specification } from "./Specification"
 export const CreateProductRight = ({
   tags,
   setTags,
@@ -15,6 +16,8 @@ export const CreateProductRight = ({
   setKey_word,
   products = [],
   setProduct_class,
+  specifi,
+  setSpecifi,
 }) => {
   const [data, setData] = useState()
   const [keyWord, setKeyWord] = useState([])
@@ -60,7 +63,6 @@ export const CreateProductRight = ({
     setProduct_class(e.target.value)
   }
   const handleChangeKeyword = (option = []) => {
-    console.log(option)
     setKey_word(option.map((item) => item._id))
   }
   return (
@@ -149,7 +151,25 @@ export const CreateProductRight = ({
         />
       </div>
       <div className="SectionInner">
+        <Specification specifi={specifi} setSpecifi={setSpecifi} />
+      </div>
+      <div className="SectionInner">
         <h1>Thống số kỹ thuật</h1>
+        {specifi.length > 0 &&
+          specifi.map((item, key) => {
+            return (
+              <div key={key} className="mb-4">
+                <p className="mb-3">{item.label}</p>
+                {item.value.map((val, key) => {
+                  return (
+                    <p key={key} className="ms-3">
+                      {val.label} : {val.data}
+                    </p>
+                  )
+                })}
+              </div>
+            )
+          })}
       </div>
     </>
   )

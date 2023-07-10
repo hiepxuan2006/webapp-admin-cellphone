@@ -36,7 +36,6 @@ const SignIn = () => {
       toastAlert("error", message)
       throw new Error(message)
     }
-    console.log(data)
     setLocalData("access_token", data.access_token)
     setLocalData("user", data.user)
     setLocalData("roles", data.roles)
@@ -44,7 +43,10 @@ const SignIn = () => {
     toastAlert("success", "success")
     navigate("/")
   }
-  if (isLogin) navigate("/")
+  if (isLogin) {
+    navigate("/")
+    return null
+  }
   if (loading) return <LoadingProcess />
   return (
     <div className="Sign-in" style={{ backgroundImage: `url(${bg})` }}>
@@ -60,7 +62,7 @@ const SignIn = () => {
         </div>
         <form className="FormLogin" onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
+            <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
             </label>
             <input
@@ -78,7 +80,7 @@ const SignIn = () => {
             </div>
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Password
             </label>
             <input
@@ -97,7 +99,7 @@ const SignIn = () => {
               className="form-check-input"
               id="exampleCheck1"
             />
-            <label className="form-check-label" for="exampleCheck1">
+            <label className="form-check-label" htmlFor="exampleCheck1">
               Remember me
             </label>
           </div>

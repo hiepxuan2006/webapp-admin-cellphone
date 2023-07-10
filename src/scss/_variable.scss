@@ -1,6 +1,6 @@
 :root {
     --collapsed-size: 70px;
-    --offscreen-size: 280px;
+    --offscreen-size: 200px;
     $border-color: rgba(0, 0, 0, 0.0625);
     --default-primary: #0f9d58;
     --boxShadow: rgb(204 204 204) 0px 0px 10px;
@@ -28,7 +28,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-size: 1.6rem;
 }
 
 html {
@@ -36,7 +35,7 @@ html {
 }
 
 body {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-family: 'Quicksand', sans-serif;
     scroll-behavior: smooth;
     width: 100%;
@@ -86,10 +85,10 @@ h1,h2,h3,h4{
     margin: 0;
 }
 select{
-    font-size: 16px !important; 
+    font-size: 14px !important; 
 }
 button{
-    font-size: 16px !important;
+    font-size: 14px !important;
 }
 // ////draft-js
 .wrapper-class {
@@ -110,9 +109,10 @@ button{
 
 
 img{
+    cursor: pointer;
     width: 100% !important;
     height: 100% !important;
-    object-fit: contain;
+    object-fit: cover;
 }
 .select__menu{
     background-color: #fff !important;
@@ -122,6 +122,7 @@ img{
     td {
         vertical-align: middle !important;
         height: 60px;
+        color: #ccc;
 
         .Cell {
             width: 100%;
@@ -132,4 +133,22 @@ img{
             height: 60px;
         }
     }
+   
 }
+.bg-color-animation {
+    background-image: linear-gradient(-45deg, rgba(221, 221, 221, 0.525), rgba(227, 227, 227, 0.985),rgba(198, 198, 198, 0.793));
+    animation: bg-color-animation 2s ease infinite;
+    background-size: 400%;
+  }
+  
+  @keyframes bg-color-animation {
+    0% {
+        background-position: left ; 
+      }
+      50% {
+        background-position: right ; 
+      }
+      100% {
+        background-position: left ; 
+      }
+  }

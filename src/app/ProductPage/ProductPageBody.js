@@ -1,23 +1,33 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { faPen, faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import {
+  faCheckDouble,
+  faClose,
+  faEdit,
+  faPen,
+  faTrash,
+  faTrashCan,
+} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import TableLoading from "../../helpers/TableLoading"
-import { formattedNumber } from "../../helpers/formatCurentcy"
 import { useState } from "react"
 import { ModalImagePwoduct } from "./ModalImagePwoduct"
 import { confirmDialog } from "../../helpers/alertConfirm"
-import { deleteProducts } from "../../services/api/productService"
+import { formattedNumber } from "../../helpers/formatCurentcy"
+import {
+  changeStatusSpecial,
+  deleteProducts,
+} from "../../services/api/productService"
+import { Dropdown, Spinner } from "react-bootstrap"
 import { toast } from "react-toastify"
-import { Dropdown, DropdownButton, Form } from "react-bootstrap"
 const ProductPageBody = ({
   products = [],
   loading,
   setProductChose,
   productChose = [],
+  setReload,
+  isReload,
 }) => {
   const [show, setShow] = useState(false)
   const [imagePreview, setImagePreview] = useState([])
-
   const handleChange = (e, value) => {
     const newProductsChose = productChose.length
       ? productChose.filter((item) => item !== value._id)
@@ -31,9 +41,11 @@ const ProductPageBody = ({
   }
 
   const handleDelete = async (id) => {
-    const isConfirm = await confirmDialog()
+    const isConfirm = await confirmDialog({
+      title: "bạn có muốn xóa sản phẩm ?",
+    })
     if (isConfirm) {
-      const { data, success, message } = await deleteProducts(id)
+      const { success, message } = await deleteProducts(id)
       if (!success) throw new Error(message)
 
       toast("🦄Successfully!", {
@@ -49,18 +61,36 @@ const ProductPageBody = ({
       window.location.reload()
     }
   }
+
+  const handleStatusSale = async (item) => {
+    const { _id, special } = item
+    const isConfirm = await confirmDialog({
+      title: "thay đổi trạng thái sản phẩm ?",
+    })
+    if (isConfirm) {
+      const { success } = await changeStatusSpecial({
+        id: _id,
+        status: !special,
+      })
+      if (success) setReload(!isReload)
+    }
+  }
   return (
     <>
       {loading ? (
-        <TableLoading columnQuantity={4} />
+        <div className="d-flex justify-content-center">
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </div>
       ) : (
         <>
           {products.length &&
             products.map((item, key) => {
               return (
-                <>
-                  <tr key={key}>
-                    <td className="d-flex align-items-center ">
+                <tbody key={key}>
+                  <tr>
+                    <td>
                       <input
                         checked={productChose.includes(item._id)}
                         type="checkbox"
@@ -79,50 +109,88 @@ const ProductPageBody = ({
                             src={item.images[0]}
                           />
                         </div>
-                        <p>{item.title}</p>
+                        <p className="NameProduct">{item.title}</p>
                       </div>
                     </td>
                     <td>
-                      {item.retail_price && formattedNumber(item.retail_price)}
+                      <p>
+                        {item.retail_price &&
+                          formattedNumber(item.retail_price)}
+                      </p>
                     </td>
                     <td>
-                      <Form.Select aria-label="Default select example">
-                        <option disabled defaultChecked>
-                          Danh mục
-                        </option>
-                        <option disabled>One</option>
-                        <option disabled>Two</option>
-                        <option disabled>Three</option>
-                      </Form.Select>
+                      <p>{item.category[0].name}</p>
+                    </td>
+                    <td>
+                      <p
+                        className="StatusSpecial"
+                        onClick={() => handleStatusSale(item)}
+                      >
+                        {item.special ? (
+                          <FontAwesomeIcon
+                            className="StatusActive"
+                            icon={faCheckDouble}
+                          />
+                        ) : (
+                          <FontAwesomeIcon
+                            className="StatusDisable"
+                            icon={faClose}
+                          />
+                        )}
+                      </p>
                     </td>
                     <td>
                       <p className={item.is_active ? "active" : "disable"}>
                         {item.is_active ? "active" : "disable"}
                       </p>
                     </td>
-                    <td className="text-center d-flex justify-content-center gap-3">
-                      <div className="ActionIcon ActionIconDel">
-                        <FontAwesomeIcon
-                          icon={faTrashCan}
-                          onClick={() => handleDelete(item._id)}
-                        />
-                      </div>
-                      <div className="ActionIcon ActionIconEdit">
-                        <FontAwesomeIcon icon={faPen} />
+                    <td>
+                      <div className="text-center d-flex justify-content-center gap-3">
+                        <div className="ActionIcon ActionIconDel">
+                          <FontAwesomeIcon
+                            icon={faTrashCan}
+                            onClick={() => handleDelete(item._id)}
+                          />
+                        </div>
+                        <div className="ActionIcon ActionIconEdit">
+                          <FontAwesomeIcon icon={faPen} />
+                        </div>
                       </div>
                     </td>
+                    <td>
+                      <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                          Actions
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                          <div className="DropdownItem">
+                            <FontAwesomeIcon
+                              className="IconAction "
+                              icon={faEdit}
+                            />
+                            <p>Edit</p>
+                          </div>
+                          <div
+                            onClick={(e) => handleDelete(item._id)}
+                            className="DropdownItem"
+                          >
+                            <FontAwesomeIcon
+                              className="IconAction "
+                              icon={faTrash}
+                            />
+                            <p>Delete</p>
+                          </div>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </td>
                   </tr>
-                  <ModalImagePwoduct
-                    show={show}
-                    images={imagePreview}
-                    setShow={setShow}
-                    product={item}
-                  />
-                </>
+                </tbody>
               )
             })}
         </>
       )}
+      <ModalImagePwoduct show={show} images={imagePreview} setShow={setShow} />
     </>
   )
 }

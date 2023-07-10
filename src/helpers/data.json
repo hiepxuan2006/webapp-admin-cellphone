@@ -1,0 +1,223 @@
+{
+  "data": [
+    {
+      "label": "Màn hình",
+      "value": "Màn hình",
+      "id": "1",
+      "children": [
+        {
+          "key": "display_size",
+          "label": "Kích thước màn hình",
+          "value": "Kích thước màn hình"
+        },
+        {
+          "key": "display_resolution",
+          "label": "Độ phân giải màn hình",
+          "value": "Độ phân giải màn hình"
+        },
+        {
+          "key": "display_features",
+          "label": "Công nghệ màn hình",
+          "value": "Công nghệ màn hình"
+        }
+      ]
+    },
+    {
+      "label": "Camera sau",
+      "value": "Camera sau",
+      "id": "1",
+      "children": [
+        {
+          "key": "camera_primary",
+          "label": "Camera sau",
+          "value": "Camera sau"
+        },
+        {
+          "key": "camera_video",
+          "label": "Quay video",
+          "value": "Quay video"
+        }
+      ]
+    },
+    {
+      "label": "Camera trước",
+      "value": "Camera trước",
+      "id": "2",
+      "children": [
+        {
+          "key": "camera_secondary",
+          "label": "Camera trước",
+          "value": "Camera trước"
+        },
+        {
+          "key": "camera_secondary",
+          "label": "Camera trước",
+          "value": "Camera trước"
+        }
+      ]
+    },
+    {
+      "label": "Vi xử lý & đồ họa",
+      "value": "Vi xử lý & đồ họa",
+      "id": "3",
+      "children": [
+        {
+          "key": "chipset",
+          "label": "Chipset",
+          "value": "Chipset"
+        },
+        {
+          "key": "cpu",
+          "label": "Loại CPU",
+          "value": "Loại CPU"
+        },
+        {
+          "key": "gpu",
+          "label": "GPU",
+          "value": "GPU"
+        }
+      ]
+    },
+    {
+      "label": "RAM & lưu trữ",
+      "value": "RAM & lưu trữ",
+      "id": "1",
+      "children": [
+        {
+          "key": "memory_internal",
+          "label": "Dung lượng RAM",
+          "value": "Dung lượng RAM"
+        },
+        {
+          "key": "storage",
+          "label": "Bộ nhớ trong",
+          "value": "Bộ nhớ trong"
+        },
+        {
+          "key": "memory_card_slot",
+          "label": "Khe cắm thẻ nhớ",
+          "value": "Khe cắm thẻ nhớ"
+        }
+      ]
+    },
+    {
+      "label": "Pin & công nghệ sạc",
+      "value": "Pin & công nghệ sạc",
+      "id": "4",
+      "children": [
+        {
+          "key": "battery",
+          "label": "Pin",
+          "value": "Pin"
+        },
+        {
+          "key": "mobile_cong_nghe_sac",
+          "label": "Công nghệ sạc",
+          "value": "Công nghệ sạc"
+        },
+        {
+          "key": "mobile_cong_sac",
+          "label": "Cổng sạc",
+          "value": "Cổng sạc"
+        }
+      ]
+    },
+    {
+      "label": "Giao tiếp & kết nối",
+      "value": "Giao tiếp & kết nối",
+      "id": "5",
+      "children": [
+        {
+          "key": "sim",
+          "label": "Thẻ SIM",
+          "value": "Thẻ SIM"
+        },
+        {
+          "key": "os_version",
+          "label": "Hệ điều hành",
+          "value": "Hệ điều hành"
+        },
+        {
+          "key": "mobile_hong_ngoai",
+          "label": "Hồng ngoại",
+          "value": "Hồng ngoại"
+        },
+        {
+          "key": "mobile_jack_tai_nghe",
+          "label": "Jack tai nghe 3.5",
+          "value": "Jack tai nghe 3.5"
+        },
+        {
+          "key": "mobile_nfc",
+          "label": "Công nghệ NFC",
+          "value": "Công nghệ NFC"
+        },
+        {
+          "key": "loai_mang",
+          "label": "Hỗ trợ mạng",
+          "value": "Hỗ trợ mạng"
+        },
+        {
+          "key": "wlan",
+          "label": "Wi-Fi",
+          "value": "Wi-Fi"
+        },
+        {
+          "key": "bluetooth",
+          "label": "Bluetooth",
+          "value": "Bluetooth"
+        },
+        {
+          "key": "gps",
+          "label": "GPS",
+          "value": "GPS"
+        }
+      ]
+    },
+    {
+      "label": "Thiết kế & Trọng lượng",
+      "value": "Thiết kế & Trọng lượng",
+      "id": "6",
+      "children": [
+        {
+          "key": "dimensions",
+          "label": "Kích thước",
+          "value": "Kích thước"
+        },
+        {
+          "key": "product_weight",
+          "label": "Trọng lượng",
+          "value": "Trọng lượng"
+        },
+        {
+          "key": "mobile_chat_lieu_mat_lung",
+          "label": "Chất liệu mặt lưng",
+          "value": "Chất liệu mặt lưng"
+        },
+        {
+          "key": "mobile_chat_lieu_khung_vien",
+          "label": "Chất liệu khung viền",
+          "value": "Chất liệu khung viền"
+        }
+      ]
+    },
+    {
+      "label": "Thông số khác",
+      "value": "Thông số khác",
+      "id": "7",
+      "children": []
+    },
+    {
+      "label": "Tiện ích khác",
+      "value": "Tiện ích khác",
+      "id": "8",
+      "children": []
+    },
+    {
+      "label": "Thông tin chung",
+      "value": "Thông tin chung",
+      "id": "9",
+      "children": []
+    }
+  ]
+}

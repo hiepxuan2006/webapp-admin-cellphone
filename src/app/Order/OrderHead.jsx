@@ -4,13 +4,14 @@ export const OrderHead = () => {
   return (
     <thead className="AccountTableHead table-light ">
       <tr className="col">
-        <th className="col-2">Tên khách hàng</th>
-        <th className="col-2">Địa chỉ</th>
-        <th className="col-3">Sản phẩm</th>
-        <th className="col-1">Đơn giá</th>
-        <th className="col-2">Trạng thái đơn hàng</th>
-        <th className="col-1">Ngày đặt hàng</th>
-        <th className="col-1 text-center">Hành động</th>
+        <th className="col-2">Order code</th>
+        <th className="col-3">Product</th>
+        <th className="col-1">Price total</th>
+        <th className="col-2">Customer</th>
+        <th className="col-2">Status</th>
+        <th className="col-2">Address</th>
+        <th className="col-1">Order date</th>
+        <th className="col-1 text-center">Actions</th>
       </tr>
     </thead>
   )

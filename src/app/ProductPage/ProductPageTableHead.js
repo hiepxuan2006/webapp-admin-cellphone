@@ -19,11 +19,13 @@ const ProductMockupTableHead = ({
             onChange={handleChange}
           />
         </th>
-        <th className="col-3">Sản phẩm</th>
-        <th className="col-2">Giá</th>
-        <th className="col-2">Danh mục</th>
-        <th className="col-1  text-center">Trạng thái</th>
-        <th className="col-2 text-center">Hành động</th>
+        <th className="col-3">Product</th>
+        <th className="col-1">Price</th>
+        <th className="col-1">Category</th>
+        <th className="col-1 text-center">Special</th>
+        <th className="col-1  text-center">Status</th>
+        <th className="col-1 text-center">Actions</th>
+        <th className="col-1 text-center">Actions</th>
       </tr>
     </thead>
   )

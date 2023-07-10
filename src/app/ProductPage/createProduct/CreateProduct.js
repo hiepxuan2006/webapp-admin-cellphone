@@ -2,9 +2,13 @@ import _ from "lodash"
 import { useCallback, useEffect, useState } from "react"
 import { Button, Col, Form, Row } from "react-bootstrap"
 import { useDropzone } from "react-dropzone"
-import { toast, useToast } from "react-toastify"
+import Select from "react-select"
 import { TextEditor } from "../../../Components/TextEditor"
+import { LoadingProcess } from "../../../Components/loading/LoadingProcess"
+import { EditorCk } from "../../../Components/textEditorCk/EditorCk"
 import generateVariants from "../../../helpers/generateVariants"
+import { toastAlert } from "../../../helpers/toast"
+import { uploadImage } from "../../../services/api/createApiServices"
 import {
   createProduct,
   getListProduct,
@@ -13,10 +17,7 @@ import { CategoryProduct } from "./CategoryProduct"
 import { CreateProductRight } from "./CreateProductRight"
 import ProductAttributesList from "./attributes/ProductAttributesList"
 import VariantsTable from "./variants/VariantsTable"
-import { uploadImage } from "../../../services/api/createApiServices"
-import { EditorCk } from "../../../Components/textEditorCk/EditorCk"
-import { toastAlert } from "../../../helpers/toast"
-import { LoadingProcess } from "../../../Components/loading/LoadingProcess"
+import { Specification } from "./Specification"
 
 const CreateProduct = () => {
   const [attributes, setAttributes] = useState([])
@@ -34,7 +35,7 @@ const CreateProduct = () => {
   const [loading, setLoading] = useState(false)
   const [product_class, setProduct_class] = useState("")
   const [products, setProducts] = useState([])
-
+  const [specifi, setSpecifi] = useState([])
   const _getProducts = async () => {
     try {
       setLoading(true)
@@ -47,7 +48,6 @@ const CreateProduct = () => {
         item.value = item._id
         return item
       })
-      console.log(newListProducts)
       setProducts(newListProducts)
       setLoading(false)
     } catch (error) {
@@ -217,7 +217,6 @@ const CreateProduct = () => {
     <div className="CreateProductPage ">
       <h1>Create Product</h1>
       <Row>
-        {loading && <LoadingProcess />}
         <Form.Group as={Col} md="8">
           <Form md="3">
             <div className="SectionInner">
@@ -341,6 +340,7 @@ const CreateProduct = () => {
               </Row>
             </div>
           </Form>
+
           <div className="SectionInner">
             <h1>
               Product Image <span className="text-danger ml-1">(*)</span>
@@ -416,6 +416,8 @@ const CreateProduct = () => {
             setKey_word={setKey_word}
             key_word={key_word}
             products={products}
+            specifi={specifi}
+            setSpecifi={setSpecifi}
             setProduct_class={setProduct_class}
           />
         </Form.Group>

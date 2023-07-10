@@ -55,3 +55,11 @@ export const getTags = (params) => {
     method: "get",
   })
 }
+
+export const changeStatusSpecial = (params) => {
+  const { id, status } = params
+  return api.makeAuthRequest({
+    url: `/change-status-special?id=${id}&status=${status}`,
+    method: "get",
+  })
+}

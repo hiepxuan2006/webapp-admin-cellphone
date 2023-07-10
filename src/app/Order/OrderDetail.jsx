@@ -4,6 +4,8 @@ import { getOrder } from "../../services/api/orderService"
 import { Button, Col, Form, Row } from "react-bootstrap"
 import moment from "moment"
 import { formattedNumber } from "../../helpers/formatCurentcy"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCalendarDay } from "@fortawesome/free-solid-svg-icons"
 
 export const OrderDetail = () => {
   const [order, setOrder] = useState("")
@@ -26,55 +28,39 @@ export const OrderDetail = () => {
           <Row>
             <Col md={8}>
               <div className="SectionInner">
-                <h1>Chi tiết đơn hàng #{order_code}</h1>
-                <span>Hình thức thanh toán : {order.payment_type}</span>
+                <div className="OrderDetailHeading">
+                  <h1>Order #{order_code}</h1>
+                  <div
+                    className={`${order.paid ? "Paid" : "Unpaid"} OrderPaid`}
+                  >
+                    {order.paid ? "Paid" : "Unpaid"}
+                  </div>
+                  <div className="StatusOrder">{order.status}</div>
+                  <div className="OrderAt">
+                    <FontAwesomeIcon icon={faCalendarDay} />
+                    <p>{moment(order.order_at).format("LTS L")}</p>
+                  </div>
+                </div>
+                <span>Payment type : {order.payment_type}</span>
                 <div className="ContentOrder mt-5">
                   <Row>
-                    <Col md={5}>
+                    <Col md={12}>
                       <div className="">
-                        <h2>Chung</h2>
-                        <div className="mt-3">
-                          <h4>Ngày tạo</h4>
-                          <span>{moment(order.order_at).format("LTS L")}</span>
-                        </div>
-                        <div className="mt-3">
-                          <h4>Trạng thái đơn hàng</h4>
-                          <Form.Select>
-                            <option
-                              selected={order.status === "processing"}
-                              value="1"
-                            >
-                              Chờ xác nhận
-                            </option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </Form.Select>
-                        </div>
-                        <div className="mt-3">
-                          <h4>Khách hàng</h4>
-                          <span>{order.name}</span>
-                        </div>
-                      </div>
-                    </Col>
-
-                    <Col md={7}>
-                      <div className="">
-                        <h2>Giao hàng</h2>
                         <div className="d-flex mt-3 align-items-center">
-                          <h4>Người nhận:</h4>
+                          <h4>Customer:</h4>
                           <p>{order.name}</p>
                         </div>
                         <div className="d-flex mt-3 align-items-center">
-                          <h4>Địa chỉ giao hàng:</h4>
+                          <h4>Shipping address:</h4>
                           <p>{order.shipping_address}</p>
                         </div>
                         <div className="d-flex mt-3 align-items-center">
-                          <h4>Số điện thoại:</h4>
+                          <h4>Phone Number:</h4>
                           <p>{order.phone_number}</p>
                         </div>
                       </div>
                     </Col>
-                    <Link to={"/a/admin/order"} className="mt-3">
+                    <Link to={"/a/admin/order/all"} className="mt-3">
                       <span>#Xem đơn hàng khác</span>
                     </Link>
                   </Row>
@@ -83,7 +69,7 @@ export const OrderDetail = () => {
             </Col>
             <Col md={4}>
               <div className="SectionInner">
-                <h2>Cập nhật trạng thái đơn hàng</h2>
+                <h2>Change status order</h2>
                 <Form.Select className="mt-3">
                   <option selected={order.status === "processing"} value="1">
                     Chờ xác nhận
@@ -100,35 +86,51 @@ export const OrderDetail = () => {
           <Row>
             <Col md={8}>
               <div className="SectionInner">
-                <h2 className="mb-5">Sản phẩm</h2>
-                {order.order_item.map((item, key) => {
-                  return (
-                    <div className="ItemProduct">
-                      <div className="ImageProduct">
-                        <img
-                          src={item.product_variant_id.image_uris[0]}
-                          alt=""
-                        />
+                <div className="ProductOrderItems">
+                  <h2 className="mb-4 border-bottom">Order Details</h2>
+                  <div className="OrderDetailNote mb-4 border-bottom">
+                    <p>Order note:</p>
+                    <p>{order.note}</p>
+                  </div>
+                  {order.order_item.map((item, key) => {
+                    return (
+                      <div className="ItemProductOrder border-bottom mb-4">
+                        <div className="ImageProduct">
+                          <img src={item.image_uris[0]} alt="" />
+                        </div>
+                        <div className="TitleProduct">
+                          <p>
+                            {item.product_variant_id.title} * ({item.quantity})
+                          </p>
+                        </div>
+                        <div>
+                          <p>
+                            {formattedNumber(
+                              item.price - (item.price * item.discount) / 100
+                            )}
+                          </p>
+                        </div>
                       </div>
-                      <div className="TitleProduct">
-                        <p>
-                          {item.product_variant_id.title} * ({item.quantity})
-                        </p>
-                      </div>
-                      <div>
-                        <h3>Thành tiền:</h3>
-                        <p>
-                          {formattedNumber(
-                            item.price - (item.price * item.discount) / 100
-                          )}
-                        </p>
-                      </div>
+                    )
+                  })}
+                  <div className="CalculatorPrice">
+                    <div className="PriceItems d-flex gap-3 mt-3 justify-content-end">
+                      <h4>Sub Total:</h4>
+                      <p> &ensp; {formattedNumber(order.price_total)}</p>
                     </div>
-                  )
-                })}
-                <div className="d-flex justify-content-end">
-                  <h3>Tổng tiền:</h3>
-                  <p> &ensp; {formattedNumber(order.price_total)}</p>
+                    <div className="PriceItems d-flex gap-3 mt-3 justify-content-end">
+                      <h4>Coupon discount:</h4>
+                      <p> &ensp; {formattedNumber(0)}</p>
+                    </div>
+                    <div className="PriceItems d-flex gap-3 mt-3 justify-content-end">
+                      <h4>Shipping:</h4>
+                      <p> &ensp; {formattedNumber(30000)}</p>
+                    </div>
+                    <div className="PriceItems d-flex gap-3 mt-5 justify-content-end">
+                      <h4>Total:</h4>
+                      <p> &ensp; {formattedNumber(order.price_total)}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Col>

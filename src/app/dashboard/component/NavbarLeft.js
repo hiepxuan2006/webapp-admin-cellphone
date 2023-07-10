@@ -1,15 +1,30 @@
+import { getLocalData } from "../../../services/api/StoreageServices"
 import MenuItem from "./MenuItem"
-const { NAVBAR_MENU } = require("../constants")
+const { NAVBAR_MENU, NAVBAR_MENU_Home } = require("../constants")
+const shop = require("../../../assets/shop.jpg")
 const NavbarLeft = ({ pathname }) => {
-  const navbar = NAVBAR_MENU
+  const navbar = NAVBAR_MENU_Home
+  const user = getLocalData("user")
+
   return (
     <div className="NavbarLeft">
       <div className="NavbarLeftInner justify-content-between">
+        <div className="NavbarLeftStore">
+          <div className="StoreName">
+            <img src={shop} alt="" />
+          </div>
+          <p>{user && user.name}</p>
+        </div>
         <nav className="PrimaryMenu">
-          {navbar.map((nav) => {
+          {navbar.map((nav, index) => {
             return (
-              <div>
-                <MenuItem pathname={pathname} item={nav} key={nav.href} />
+              <div className="NavbarLeftItem" key={index}>
+                <p className="GroupName">{nav.group}</p>
+                {nav.child.map((child, index) => {
+                  return (
+                    <MenuItem pathname={pathname} item={child} key={index} />
+                  )
+                })}
               </div>
             )
           })}

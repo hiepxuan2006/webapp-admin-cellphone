@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { useState } from "react"
 
-function MenuItem({ item, selectedCheckbox, setSelectedCheckbox }) {
+function MenuItem({ item, selectedCheckbox, setSelectedCheckbox, key }) {
   const hasChildren = item.children && item.children.length > 0
   const [isExpanded, setIsExpanded] = useState(false)
 
@@ -21,7 +21,7 @@ function MenuItem({ item, selectedCheckbox, setSelectedCheckbox }) {
     setSelectedCheckbox("")
   }
   return (
-    <li className="">
+    <li className="" key={key}>
       <div className="d-flex align-items-center ">
         {hasChildren ? (
           <>

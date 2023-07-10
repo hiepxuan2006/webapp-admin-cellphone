@@ -36,7 +36,7 @@ const VariantImageContainer = (props) => {
         className="d-inline-block cursor-pointer"
         onClick={() => _toggleModal()}
       >
-        <span class="hiddenFileInput">
+        <span className="hiddenFileInput">
           <input
             type="file"
             name="image"
