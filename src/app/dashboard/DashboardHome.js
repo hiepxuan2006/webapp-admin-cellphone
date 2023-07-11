@@ -63,9 +63,6 @@ export const DashboardHome = () => {
             <ChartOrder />
           </div>
         </div>
-        <div className="SectionInner">
-          <InvoiceOrder />
-        </div>
       </div>
     </div>
   )
