@@ -8,54 +8,32 @@ import { PolarAreaChart } from "../../../helpers/PolarAreaChart"
 export const ChartOrder = ({ countOrder }) => {
   const [data, setData] = useState([])
   const [dataDailyDay, setDataDailyDay] = useState([])
-  const [userData, setUserData] = useState(
-    {
-      labels: [1, 2, 3, 4, 5, 6, 7],
-      datasets: [
-        {
-          label: "Order",
-          data: [1, 2, 3, 4, 5, 6, 7],
-          backgroundColor: [
-            "rgba(75,192,192,1)",
-            "#ecf0f1",
-            "#50AF95",
-            "#f3ba2f",
-            "#2a71d0",
-            "#2a71d0",
-            "#2a71d0",
-          ],
-          borderColor: "black",
-          borderWidth: 2,
-        },
-      ],
-    },
-    {
-      labels: data.map((item) => item.time),
-      datasets: [
-        {
-          label: "Order",
-          data: data.map((item) => item.totalAmount),
-          backgroundColor: [
-            "rgba(75,192,192,1)",
-            "#ecf0f1",
-            "#50AF95",
-            "#f3ba2f",
-            "#2a71d0",
-            "#2a71d0",
-            "#2a71d0",
-          ],
-          borderColor: "black",
-          borderWidth: 2,
-        },
-      ],
-    }
-  )
+  const [userData, setUserData] = useState({
+    labels: [1, 2, 3, 4, 5, 6, 7],
+    datasets: [
+      {
+        label: "Order",
+        data: [1, 2, 3, 4, 5, 6, 7],
+        backgroundColor: [
+          "rgba(75,192,192,1)",
+          "#ecf0f1",
+          "#50AF95",
+          "#f3ba2f",
+          "#2a71d0",
+          "#2a71d0",
+          "#2a71d0",
+        ],
+        borderColor: "black",
+        borderWidth: 2,
+      },
+    ],
+  })
   const [dayData, setDayData] = useState({
     labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
     datasets: [
       {
         label: "Order Day",
-        data: data.map((item) => item.totalAmount),
+        data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
         backgroundColor: [
           "#ff0000",
           "#00ff00",
