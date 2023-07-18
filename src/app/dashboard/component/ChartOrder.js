@@ -10,7 +10,7 @@ export const ChartOrder = ({ countOrder }) => {
   const [dataDailyDay, setDataDailyDay] = useState([])
   const [userData, setUserData] = useState(
     {
-      labels: data.map((item) => item.time),
+      labels: [1, 2, 3, 4, 5, 6, 7],
       datasets: [
         {
           label: "Order",
