@@ -85,7 +85,7 @@ export const DashboardHome = () => {
         </div>
         <div className="row">
           <div className="col col-md-12">
-            <ChartOrder countOrder={countOrder} />
+            <ChartOrder />
           </div>
         </div>
       </div>
