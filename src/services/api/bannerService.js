@@ -11,3 +11,10 @@ export const createBanner = (data) => {
     data,
   })
 }
+
+export const getAllBanner = (data) => {
+  return api.makeAuthRequest({
+    url: `/get-all-banner?${data}`,
+    method: "get",
+  })
+}

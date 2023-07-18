@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import { getOrder } from "../../services/api/orderService"
+import { changeStatusOrder, getOrder } from "../../services/api/orderService"
 import { Button, Col, Form, Row } from "react-bootstrap"
 import moment from "moment"
 import { formattedNumber } from "../../helpers/formatCurentcy"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCalendarDay } from "@fortawesome/free-solid-svg-icons"
+import { toastAlert } from "../../helpers/toast"
+import queryString from "query-string"
 
 export const OrderDetail = () => {
   const [order, setOrder] = useState("")
   const { order_code } = useParams()
-
+  const [status, setStatus] = useState()
+  const [reload, setReload] = useState(true)
   const _getOrder = async () => {
     const { data, success, message } = await getOrder({ order_code })
     if (!success) throw new Error(message)
@@ -19,8 +22,29 @@ export const OrderDetail = () => {
 
   useEffect(() => {
     _getOrder()
-  }, [])
-  console.log(order)
+  }, [reload])
+  const onChangeStatusOrder = (e) => {
+    setStatus(e.target.value)
+  }
+  const handleUpdateStatus = async (e, order) => {
+    e.preventDefault()
+    const { _id } = order
+
+    const params = queryString.stringify(
+      { status, _id },
+      {
+        skipNull: true,
+        skipEmptyString: true,
+      }
+    )
+    const { success, message } = await changeStatusOrder(params)
+    if (!success) {
+      toastAlert("error", message)
+      throw new Error(message)
+    }
+    setReload(!reload)
+    toastAlert("success", "Update successfully")
+  }
   return (
     <div className="OrderDetail">
       {order && (
@@ -70,16 +94,47 @@ export const OrderDetail = () => {
             <Col md={4}>
               <div className="SectionInner">
                 <h2>Change status order</h2>
-                <Form.Select className="mt-3">
-                  <option selected={order.status === "processing"} value="1">
-                    Chờ xác nhận
+                <Form.Select className="mt-3" onChange={onChangeStatusOrder}>
+                  <option selected={order.status === "pending"} value="pending">
+                    Đặt hàng thành công
                   </option>
-                  <option value="2">Đã xác nhận</option>
-                  <option value="2">Đang chuẩn bị hàng</option>
-                  <option value="3">Đang gửi hàng</option>
-                  <option value="3">Gửi hàng thành công</option>
+                  <option
+                    selected={order.status === "confirmed"}
+                    value="confirmed"
+                  >
+                    Đã xác nhận
+                  </option>
+                  <option
+                    selected={order.status === "processing"}
+                    value="processing"
+                  >
+                    Đang chuẩn bị
+                  </option>
+                  <option
+                    selected={order.status === "delivery"}
+                    value="delivery"
+                  >
+                    Đang giao hàng
+                  </option>
+                  <option
+                    selected={order.status === "delivered"}
+                    value="delivered"
+                  >
+                    Đã giao hàng
+                  </option>
+                  <option
+                    selected={order.status === "canceled"}
+                    value="canceled"
+                  >
+                    Hủy đơn hàng
+                  </option>
                 </Form.Select>
-                <Button className="mt-3">Cập nhật</Button>
+                <Button
+                  className="mt-3"
+                  onClick={(e) => handleUpdateStatus(e, order)}
+                >
+                  Cập nhật
+                </Button>
               </div>
             </Col>
           </Row>

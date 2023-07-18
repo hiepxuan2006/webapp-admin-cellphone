@@ -1,17 +1,11 @@
-import React from "react"
-import { formattedNumber } from "../../helpers/formatCurentcy"
+import { faEdit, faEye } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faEdit,
-  faEye,
-  faPrint,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons"
 import moment from "moment"
-import { Button, Dropdown, Form, Modal } from "react-bootstrap"
-import { useState } from "react"
+import React, { useState } from "react"
+import { Button, Dropdown, Modal } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import TableLoading from "../../helpers/TableLoading"
+import { formattedNumber } from "../../helpers/formatCurentcy"
 import { InvoiceOrder } from "./InvoiceOrder"
 
 export const OrderBody = ({ orders = [], loading }) => {

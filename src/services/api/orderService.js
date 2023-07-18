@@ -25,3 +25,17 @@ export const analyticOrder = () => {
     method: "get",
   })
 }
+
+export const changeStatusOrder = (params) => {
+  return api.makeRequest({
+    url: `/change-status-order?${params}`,
+    method: "get",
+  })
+}
+
+export const getCountDocument = () => {
+  return api.makeAuthRequest({
+    url: "/count-order",
+    method: "get",
+  })
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { Fragment, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import PFTable from "../../Components/Tables/PFTable"
 import { getListOrders } from "../../services/api/orderService"
@@ -47,43 +47,47 @@ export const Order = () => {
     setOrder_status(e.target.value)
   }
   return (
-    <div className="OrderPage">
-      <DocTitle title="Đơn hàng" />
-      <div className="SectionInner">
-        <div className="FilterOrder d-flex">
-          <div className="TableLength me-3 d-flex align-items-center  ">
-            <h3>Hiển thị:</h3>
-            <select className="ms-2 px-4" onChange={handleChangeLimit}>
-              <option value="10">10 rows</option>
-              <option value="20">20 rows</option>
-              <option value="50">50 rows</option>
-              <option value="100">100 rows</option>
-            </select>
-          </div>
-          <div className="TableLength me-3 d-flex align-items-center  ">
-            <h3>Status:</h3>
-            <select className="ms-2 px-4" onChange={handleChangeStatus}>
-              <option value="all">All</option>
-              <option value="pending">Pending</option>
-              <option value="confirmed">Confirmed</option>
-              <option value="processing">Processing</option>
-              <option value="delivered">Delivered</option>
-              <option value="canceled">Canceled</option>
-            </select>
+    <Fragment>
+      <div className="OrderPage">
+        <DocTitle title="Đơn hàng" />
+        <div className="SectionInner">
+          <div className="FilterOrder d-flex">
+            <div className="TableLength me-3 d-flex align-items-center  ">
+              <h3>Hiển thị:</h3>
+              <select className="ms-2 px-4" onChange={handleChangeLimit}>
+                <option value="10">10 rows</option>
+                <option value="20">20 rows</option>
+                <option value="50">50 rows</option>
+                <option value="100">100 rows</option>
+              </select>
+            </div>
+            <div className="TableLength me-3 d-flex align-items-center  ">
+              <h3>Status:</h3>
+              <select className="ms-2 px-4" onChange={handleChangeStatus}>
+                <option value="all">All</option>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="processing">Processing</option>
+                <option value="delivered">Delivered</option>
+                <option value="canceled">Canceled</option>
+              </select>
+            </div>
           </div>
         </div>
+        <div className="SectionInner">
+          <PFTable>
+            <OrderHead />
+            <OrderBody orders={listOrders} loading={loading} />
+          </PFTable>
+        </div>
       </div>
-      <div className="SectionInner">
-        <PFTable>
-          <OrderHead />
-          <OrderBody orders={listOrders} loading={loading} />
-        </PFTable>
+      <div className="PaginationSticky">
         <PFPagePagination
           page={page}
           pages={pages}
           onChangePage={_handleChangePage}
         />
       </div>
-    </div>
+    </Fragment>
   )
 }

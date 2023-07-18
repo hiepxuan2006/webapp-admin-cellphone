@@ -1,5 +1,6 @@
 import Account from "./app/account/Account"
 import { CreateAccount } from "./app/account/CreateAccount"
+import { DetailAcount } from "./app/account/DetailAcount"
 import { Banner } from "./app/Banner/Banner"
 import { CreateBanner } from "./app/Banner/CreateBanner"
 import Category from "./app/category/Category"
@@ -48,11 +49,19 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Sign Up",
-    key: "sign-up",
+    name: "Account",
+    key: "account",
     route: "/account/create",
     layout: "admin",
     component: <CreateAccount />,
+  },
+  {
+    type: "collapse",
+    name: "Account",
+    key: "account",
+    route: "/account/detail/:id",
+    layout: "admin",
+    component: <DetailAcount />,
   },
   {
     type: "collapse",

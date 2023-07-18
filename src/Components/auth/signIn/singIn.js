@@ -14,8 +14,8 @@ const gg = require("../../../statics/assets/img/gg.png")
 const SignIn = () => {
   const { setIsLogin, isLogin } = useContext(DataContext)
   const [valueSignIn, setValueSignIn] = useState({
-    email: "",
-    password: "",
+    email: "hiepxuan2006@gmail.com",
+    password: "Hiepxuan98@",
   })
 
   const { loading } = useContext(DataContext)

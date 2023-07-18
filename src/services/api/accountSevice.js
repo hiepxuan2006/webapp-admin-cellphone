@@ -26,9 +26,17 @@ export const loginAccount = (data) => {
   })
 }
 
-export const getListAccount = () => {
+export const getListAccount = (data) => {
   return api.makeAuthRequest({
-    url: "/get-account",
+    url: `/get-account?${data}`,
     method: "get",
+  })
+}
+
+export const createAccount = (data) => {
+  return api.makeAuthRequest({
+    url: "/create-account",
+    method: "post",
+    data,
   })
 }

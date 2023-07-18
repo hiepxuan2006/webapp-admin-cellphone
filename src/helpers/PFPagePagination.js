@@ -6,7 +6,7 @@ export const PFPagePagination = ({ page, pages, onChangePage }) => {
 
     onChangePage(selected + 1)
   }
-  if (pages <= 1) return null
+  // if (pages <= 1) return null
   return (
     <div className="PagePagination Pagination">
       <ReactPaginate

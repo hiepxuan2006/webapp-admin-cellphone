@@ -18,6 +18,7 @@ import {
 } from "../../services/api/productService"
 import { Dropdown, Spinner } from "react-bootstrap"
 import { toast } from "react-toastify"
+import TableLoading from "../../helpers/TableLoading"
 const ProductPageBody = ({
   products = [],
   loading,
@@ -78,11 +79,7 @@ const ProductPageBody = ({
   return (
     <>
       {loading ? (
-        <div className="d-flex justify-content-center">
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-        </div>
+        <TableLoading columnQuantity={7} />
       ) : (
         <>
           {products.length &&

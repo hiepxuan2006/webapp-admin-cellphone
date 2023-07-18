@@ -9,6 +9,7 @@ import { PFPagePagination } from "../../helpers/PFPagePagination"
 import { getSlider } from "../../services/api/SliderApiService"
 import { SliderTableBody } from "./SliderTableBody"
 import { SliderTableHead } from "./SliderTableHead"
+import { Fragment } from "react"
 
 export const Slider = () => {
   const [sliders, setSliders] = useState([])
@@ -67,77 +68,80 @@ export const Slider = () => {
   }
 
   return (
-    <div className="SliderPage">
-      <div className="SectionInner">
-        <div className="d-flex align-items-center justify-content-between mb-5">
-          <h1>Danh sách Slider</h1>
-
-          <Link to="create">
-            <button>Thêm Slider</button>
-          </Link>
+    <Fragment>
+      <div className="SliderPage">
+        <div className="SectionInner">
+          <div className="d-flex align-items-center justify-content-between mb-5">
+            <h1>Danh sách Slider</h1>
+            <Link to="create">
+              <button>Thêm Slider</button>
+            </Link>
+          </div>
+          <div className="ProductHeader d-flex align-items-center mb-5">
+            <div className="TableLength me-3">
+              Show
+              <select className="ms-2 px-4" onChange={onChangeValue}>
+                <option disabled selected value="">
+                  chon
+                </option>
+                <option selected={limit === 10} value="4">
+                  10 rows
+                </option>
+                <option selected={limit === 20} value="20">
+                  20 rows
+                </option>
+                <option selected={limit === 50} value="50">
+                  50 rows
+                </option>
+              </select>
+            </div>
+            <div className="TableLength me-3">
+              Trạng thái
+              <select className="ms-2 px-4" onChange={onChangeStatus}>
+                <option name="is_active" defaultChecked value="is_active">
+                  active
+                </option>
+                <option is_deleted="is_deleted" value="is_deleted">
+                  deleted
+                </option>
+              </select>
+            </div>
+            <div className="form-group me-3 SearchProduct d-flex  align-items-center">
+              <label className="m-0 me-2">Title</label>
+              <input
+                type="text"
+                className="form-control"
+                id="SearchTitleProductMockup"
+                name="title"
+                onChange={onChangeSearch}
+                placeholder="Enter search Slider ..."
+              />
+              <FontAwesomeIcon icon={faSearch} className="SearchIcon" />
+            </div>
+          </div>
+          {loading ? (
+            <div className="d-flex justify-content-center">
+              <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </div>
+          ) : (
+            <div>
+              <PFTable>
+                <SliderTableHead />
+                <SliderTableBody sliders={sliders} />
+              </PFTable>
+            </div>
+          )}
         </div>
-        <div className="ProductHeader d-flex align-items-center mb-5">
-          <div className="TableLength me-3">
-            Show
-            <select className="ms-2 px-4" onChange={onChangeValue}>
-              <option disabled selected value="">
-                chon
-              </option>
-              <option selected={limit === 10} value="4">
-                10 rows
-              </option>
-              <option selected={limit === 20} value="20">
-                20 rows
-              </option>
-              <option selected={limit === 50} value="50">
-                50 rows
-              </option>
-            </select>
-          </div>
-          <div className="TableLength me-3">
-            Trạng thái
-            <select className="ms-2 px-4" onChange={onChangeStatus}>
-              <option name="is_active" defaultChecked value="is_active">
-                active
-              </option>
-              <option is_deleted="is_deleted" value="is_deleted">
-                deleted
-              </option>
-            </select>
-          </div>
-          <div className="form-group me-3 SearchProduct d-flex  align-items-center">
-            <label className="m-0 me-2">Title</label>
-            <input
-              type="text"
-              className="form-control"
-              id="SearchTitleProductMockup"
-              name="title"
-              onChange={onChangeSearch}
-              placeholder="Enter search Slider ..."
-            />
-            <FontAwesomeIcon icon={faSearch} className="SearchIcon" />
-          </div>
-        </div>
-        {loading ? (
-          <div className="d-flex justify-content-center">
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          </div>
-        ) : (
-          <div>
-            <PFTable>
-              <SliderTableHead />
-              <SliderTableBody sliders={sliders} />
-            </PFTable>
-            <PFPagePagination
-              page={page}
-              pages={pages}
-              onChangePage={_handleChangePage}
-            />
-          </div>
-        )}
       </div>
-    </div>
+      <div className="PaginationSticky">
+        <PFPagePagination
+          page={page}
+          pages={pages}
+          onChangePage={_handleChangePage}
+        />
+      </div>
+    </Fragment>
   )
 }

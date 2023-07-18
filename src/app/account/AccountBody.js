@@ -1,47 +1,66 @@
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faEdit, faEye } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
-import Select from "react-select"
+import { Dropdown } from "react-bootstrap"
+import { Link } from "react-router-dom"
+import TableLoading from "../../helpers/TableLoading"
 
-export const AccountBody = ({ accounts = [] }) => {
+export const AccountBody = ({ accounts = [], loading }) => {
   return (
-    <tbody>
-      {accounts.length > 0 &&
-        accounts.map((item, key) => {
-          const rolesFormat = item.roles.map((item) => {
-            return { value: item, label: item }
-          })
-          return (
-            <tr className="" style={{ cursor: "pointer" }} key={key}>
-              <td>
-                <input type="checkbox" name="" id="" />
-              </td>
-              <td>{item.name}</td>
-              <td>{item.email}</td>
-              <td>
-                <Select
-                  // onChange={(option) => {
-                  //   handleChangeKeyword(option)
-                  // }}
-                  // isMulti
-                  defaultInputValue={rolesFormat[0]}
-                  isSearchable={false}
-                  name="key_word"
-                  options={rolesFormat}
-                  className="basic-multi-select"
-                  classNamePrefix="roles"
-                  placeholder="roles ..."
-                />
-              </td>
-              <td>
-                <div className="h-100 d-flex justify-content-center gap-3 align-items-center">
-                  <FontAwesomeIcon className="text-warning" icon={faTrash} />
-                  <FontAwesomeIcon icon={faPen} />
-                </div>
-              </td>
-            </tr>
-          )
-        })}
-    </tbody>
+    <>
+      {loading ? (
+        <TableLoading columnQuantity={7} />
+      ) : (
+        <tbody>
+          {accounts.length > 0 &&
+            accounts.map((item, key) => {
+              const rolesFormat = item.roles.map((item) => {
+                return { value: item, label: item }
+              })
+              return (
+                <tr className="" style={{ cursor: "pointer" }} key={key}>
+                  <td>
+                    <input type="checkbox" name="" id="" />
+                  </td>
+                  <td>{item.name}</td>
+                  <td>{item.email}</td>
+                  <td>
+                    <p className="text-center">
+                      {rolesFormat.map((item) => item.value).join(",")}
+                    </p>
+                  </td>
+                  <td className="text-center">
+                    <Dropdown>
+                      <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        Actions
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        <div className="DropdownItem">
+                          <FontAwesomeIcon
+                            className="IconAction "
+                            icon={faEdit}
+                          />
+                          <p>Edit</p>
+                        </div>
+                        <Link
+                          to={`/a/admin/account/detail/${item._id}`}
+                          className="DropdownItem"
+                        >
+                          <FontAwesomeIcon
+                            className="IconAction "
+                            icon={faEye}
+                          />
+                          <p>View</p>
+                        </Link>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </td>
+                </tr>
+              )
+            })}
+        </tbody>
+      )}
+    </>
   )
 }

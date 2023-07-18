@@ -1,0 +1,26 @@
+.CreateAccount{
+   
+}
+
+// ///details
+.InfoAccount{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 150px;
+    position: relative;
+    margin-bottom: 100px;
+    background-color: rgba(11, 175, 66, 0.5490196078);
+}
+.BackgroundAccount{
+    margin-left: 180px;
+}
+.AvatarAccount{
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+}
