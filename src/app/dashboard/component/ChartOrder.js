@@ -14,7 +14,7 @@ export const ChartOrder = ({ countOrder }) => {
       datasets: [
         {
           label: "Order",
-          data: data.map((item) => item.totalAmount),
+          data: [1, 2, 3, 4, 5, 6, 7],
           backgroundColor: [
             "rgba(75,192,192,1)",
             "#ecf0f1",
