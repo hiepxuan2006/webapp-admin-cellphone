@@ -19,8 +19,8 @@ export const InvoiceOrder = ({ order = {} }) => {
     return lastThreeDigits + maskedDigits
   }
   return (
-    <div className="DropdownItem" onClick={handlePrint}>
-      <FontAwesomeIcon className="IconAction text-warning" icon={faPrint} />
+    <div className="" onClick={handlePrint}>
+      <FontAwesomeIcon className=" text-warning" icon={faPrint} />
       <p>Print invoice</p>
       <div style={{ display: "none" }}>
         {Object.keys(order).length > 0 && (

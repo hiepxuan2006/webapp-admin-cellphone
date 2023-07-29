@@ -76,7 +76,9 @@ export const OrderBody = ({ orders = [], loading }) => {
                         />
                         <p>View</p>
                       </div>
-                      <InvoiceOrder order={item} />
+                      <div className="DropdownItem">
+                        <InvoiceOrder order={item} />
+                      </div>
                     </Dropdown.Menu>
                   </Dropdown>
                 </td>
