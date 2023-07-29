@@ -1,6 +1,6 @@
 import Account from "./app/account/Account"
+import { LayoutAccount } from "./app/account/components/LayoutAccount"
 import { CreateAccount } from "./app/account/CreateAccount"
-import { DetailAcount } from "./app/account/DetailAcount"
 import { Banner } from "./app/Banner/Banner"
 import { CreateBanner } from "./app/Banner/CreateBanner"
 import Category from "./app/category/Category"
@@ -8,7 +8,6 @@ import CreateCategory from "./app/category/createCategory/CreateCategory"
 import { EditCategory } from "./app/category/editCategory/EditCategory"
 import { DashboardHome } from "./app/dashboard/DashboardHome"
 import { KeyWord } from "./app/keyword/KeyWord"
-import { InvoiceOrder } from "./app/Order/InvoiceOrder"
 import { Order } from "./app/Order/Order"
 import { OrderDetail } from "./app/Order/OrderDetail"
 import { CreateNewPost } from "./app/Post/CreateNewPost"
@@ -61,7 +60,7 @@ const routes = [
     key: "account",
     route: "/account/detail/:id",
     layout: "admin",
-    component: <DetailAcount />,
+    component: <LayoutAccount />,
   },
   {
     type: "collapse",

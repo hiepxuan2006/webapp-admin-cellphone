@@ -117,13 +117,13 @@ export const ChartOrder = ({ countOrder }) => {
   }, [data, dataDailyDay])
 
   return (
-    <div className="Chart">
-      <div className="BarChart">
+    <div className="Chart ">
+      <div className="BarChart SectionInner">
         <BarChart chartData={dayData} />
 
         <h3>Tổng doanh thu đơn hàng 12 ngày qua</h3>
       </div>
-      <div className="PolarChart">
+      <div className="PolarChart SectionInner">
         <PolarAreaChart chartData={userData} />
         <h3>Tổng doanh thu đơn hàng các tháng</h3>
       </div>

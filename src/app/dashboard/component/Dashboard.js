@@ -32,7 +32,7 @@ const Dashboard = (props) => {
   useEffect(() => {
     if (!isLogin) navigate("/sign-in")
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLogin])
+  }, [])
 
   return (
     <div className={classNames("DashboardContainer", { isCollapsed })}>

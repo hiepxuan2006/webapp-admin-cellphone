@@ -1,6 +1,6 @@
 .DashboardContainer {
     display: flex;
-
+   
     .NavbarLeft {
         width: var(--offscreen-size);
         transition: all .2s ease;
@@ -10,7 +10,6 @@
         padding-bottom: 20px;
         position: relative;
         font-size: 14px;
-
         .nav-link {
             text-decoration: none;
             font-size: 14px;
@@ -32,7 +31,6 @@
             justify-content: space-between;
             padding: 0 10px;
             cursor: pointer;
-
             &:hover {
                 background-color: #c7f7d7;
             }
@@ -46,20 +44,19 @@
         }
 
         .sub_menu_nav {
-            margin: 0 0 0 50px;
+            margin:0 0 0 50px;
             height: 0;
             transition: height 1s ease-in-out;
-
+            
             li {
                 padding: 4px 0;
                 cursor: pointer;
             }
         }
-
         .nav-visible {
-            height: auto;
-        }
-
+            height: auto ; 
+          }
+          
         //   .nav-hidden {
         //     height: 0;
         //   }
@@ -69,20 +66,18 @@
             color: #0baf428c;
         }
     }
-
-    .NavbarLeftStore {
+    .NavbarLeftStore{
         display: flex;
         align-items: center;
         position: sticky;
         top: 0;
         z-index: 1002;
         background-color: #fff;
-
-        .StoreName {
-            height: 50px;
-            width: 50px;
-
-        }
+       .StoreName{
+        height: 50px;
+        width: 50px;
+        
+       }
     }
 
     .NavbarLeft::-webkit-scrollbar {
@@ -180,11 +175,11 @@
 
 // /////////
 .MainContentInner {
-    padding: 0 4px;
+    padding:0 4px ;
     background-color: rgb(244, 244, 244);
     width: calc(100vw - var(--offscreen-size));
     height: calc(100vh - 64px);
-
+   
 
     .SectionInner {
         background-color: #fff;
@@ -208,23 +203,17 @@
     background-color: #555;
 }
 
-.LayOutAdmin {
+.LayOutAdmin{
     overflow-y: scroll;
     overflow-x: hidden;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
-
-.AccountPage,
-.OrderPage,
-.SliderPage,
-.ProductPage,
-.OrderPage {
+.AccountPage,.OrderPage,.SliderPage,.ProductPage , .OrderPage{
     position: relative;
-    flex: 1;
+    flex:1;
 }
-
 @media only screen and (max-width:480px) {
     .DashboardContainer {
         .NavbarLeft {

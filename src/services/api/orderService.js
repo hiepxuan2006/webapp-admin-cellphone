@@ -39,3 +39,10 @@ export const getCountDocument = () => {
     method: "get",
   })
 }
+
+export const getOrderByAccount = (params) => {
+  return api.makeAuthRequest({
+    url: `/get-order-by-account?id=${params}`,
+    method: "get",
+  })
+}

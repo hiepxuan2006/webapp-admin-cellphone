@@ -14,7 +14,6 @@ export const OrderBody = ({ orders = [], loading }) => {
   const handleClose = () => {
     setShow(false)
   }
-  console.log(orders)
   return (
     <>
       {!loading ? (

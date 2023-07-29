@@ -78,11 +78,7 @@ export const DashboardHome = () => {
           </div>
         </div>
       </div>
-      <div className="SectionInner">
-        <div className="d-flex align-items-center gap-3 mb-3">
-          <FontAwesomeIcon icon={faChartSimple} />
-          <h1>Total amount order</h1>
-        </div>
+      <div className="">
         <div className="row">
           <div className="col col-md-12">
             <ChartOrder />
