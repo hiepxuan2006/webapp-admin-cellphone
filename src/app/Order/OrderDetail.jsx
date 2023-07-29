@@ -23,6 +23,7 @@ export const OrderDetail = () => {
 
   useEffect(() => {
     _getOrder()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reload])
   const onChangeStatusOrder = (e) => {
     setStatus(e.target.value)
@@ -65,12 +66,11 @@ export const OrderDetail = () => {
                     <FontAwesomeIcon icon={faCalendarDay} />
                     <p>{moment(order.order_at).format("LTS L")}</p>
                   </div>
-                  <div className="InvoiceOrder">
-                    <InvoiceOrder order={order} />
-                  </div>
+
                   <div className="OrderAll">All order</div>
                 </div>
                 <span>Payment type : {order.payment_type}</span>
+                <InvoiceOrder order={order} />
                 <div className="ContentOrder mt-5">
                   <Row>
                     <Col md={12}>

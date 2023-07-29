@@ -1,10 +1,9 @@
-import React, { useRef } from "react"
-import { ReactPdfPrint } from "../../Components/ReactPdfPrint"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPrint } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import moment from "moment"
+import React, { useRef } from "react"
 import { useReactToPrint } from "react-to-print"
 import { formattedNumber } from "../../helpers/formatCurentcy"
-import moment from "moment"
 const logo = require("../../assets/shop.jpg")
 export const InvoiceOrder = ({ order = {} }) => {
   const componentRef = useRef()
