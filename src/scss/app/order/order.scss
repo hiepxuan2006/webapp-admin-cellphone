@@ -138,6 +138,12 @@
 
 // //////invoice
 
+.OrderPrintInvoice {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
 .InvoiceOrder {
     width: 90%;
     height: 100%;
@@ -162,7 +168,7 @@
 
 .InvoiceHeaderHeading {
     font-weight: 700;
-    padding:4px;
+    padding: 4px;
 }
 
 .InvoiceOrderBody {
@@ -178,29 +184,34 @@
     }
 }
 
-.InvoiceOrderItem{
+.InvoiceOrderItem {
     display: flex;
     gap: 20px;
     padding: 4px;
 }
-.InvoicePrice{
+
+.InvoicePrice {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
 }
-.InvoicePriceItem{
+
+.InvoicePriceItem {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
     margin-top: 10px;
     padding-right: 10px;
-    p{
+
+    p {
         min-width: 150px;
         text-align: right;
     }
+
     margin-bottom: 10px;
 }
-.InvoiceFooter{
+
+.InvoiceFooter {
     text-align: center;
     margin-top: auto;
 }

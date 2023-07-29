@@ -9,8 +9,8 @@ function TableLoading(props) {
     : new Array(columnQuantity).fill(null)
 
   return (
-    <tbody className="TableLoading .bg-color-animation">
-      <tr className="bg-color-animation">
+    <tbody className="TableLoading bg-color-animation">
+      <tr>
         {mappedColumns.map((column, i) => (
           <td key={i}>
             <span
@@ -21,7 +21,7 @@ function TableLoading(props) {
           </td>
         ))}
       </tr>
-      <tr className="bg-color-animation">
+      <tr>
         {mappedColumns.map((column, id) => (
           <td key={id}>
             <span
@@ -32,7 +32,7 @@ function TableLoading(props) {
           </td>
         ))}
       </tr>
-      <tr className="bg-color-animation">
+      <tr>
         {mappedColumns.map((column, id) => (
           <td key={id}>
             <span

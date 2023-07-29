@@ -33,7 +33,20 @@ export const ChartOrder = ({ countOrder }) => {
     datasets: [
       {
         label: "Order Day",
-        data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        data: [
+          "1",
+          "9",
+          "10",
+          "20",
+          "5",
+          "10",
+          "7",
+          "8",
+          "19",
+          "15",
+          "13",
+          "16",
+        ],
         backgroundColor: [
           "#ff0000",
           "#00ff00",

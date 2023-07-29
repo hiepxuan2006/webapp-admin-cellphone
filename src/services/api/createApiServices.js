@@ -45,10 +45,11 @@ const _makeAuthRequest = (createRequest) => async (args) => {
 // eslint-disable-next-line import/no-anonymous-default-export
 const createAPIServices = (_options = {}) => {
   const baseUrlValidated = _options.baseUrl
+  const timeout = _options.timeout || 10000
 
   const configs = {
     baseURL: baseUrlValidated,
-    timeout: 10000,
+    timeout: timeout,
     validateStatus: function (status) {
       return status >= 200
     },

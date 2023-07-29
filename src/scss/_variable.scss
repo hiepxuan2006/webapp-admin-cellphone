@@ -55,69 +55,88 @@ input {
 p {
     margin: 0;
 }
-.height-40{
+
+.height-40 {
     height: 40px;
 }
 
-a{
+a {
     text-decoration: none;
     color: #000;
 }
+
 // category
-.dropdown-content{
+.dropdown-content {
     position: relative !important;
     width: 100%;
 }
-.dropdown{
+
+.dropdown {
     width: 100%;
 }
-.dropdown-trigger{
-width: 100%;
+
+.dropdown-trigger {
+    width: 100%;
 }
-li , ul{
+
+li,
+ul {
     list-style-type: none;
 }
-tr{
+
+tr {
     border-bottom: 1px solid #ccc;
-    
+
 }
-h1,h2,h3,h4{
+
+h1,
+h2,
+h3,
+h4 {
     margin: 0;
 }
-ul{
+
+ul {
     margin: 0;
 }
-select{
-    font-size: 14px !important; 
-}
-button{
+
+select {
     font-size: 14px !important;
 }
+
+button {
+    font-size: 14px !important;
+}
+
 // ////draft-js
 .wrapper-class {
     padding: 1rem;
     border: 1px solid #ccc;
     min-height: 400px;
-  }
-  .editor-class {
-    background-color:rgb(255, 255, 255);
+}
+
+.editor-class {
+    background-color: rgb(255, 255, 255);
     padding: 1rem;
     // border: 1px solid #c00707;
     height: 100%;
-  }
-  .toolbar-class {
+}
+
+.toolbar-class {
     border: 1px solid #08fa75;
-  }
+}
+
 //   
 
 
-img{
+img {
     cursor: pointer;
     width: 100% !important;
     height: 100% !important;
     object-fit: cover;
 }
-.select__menu{
+
+.select__menu {
     background-color: #fff !important;
 }
 
@@ -135,23 +154,30 @@ img{
         .ImageCell {
             height: 60px;
         }
+       background-image: none;
+       background-color: transparent;
     }
-   
+    
+    
+
 }
+
 .bg-color-animation {
-    background-image: linear-gradient(-45deg, rgba(221, 221, 221, 0.525), rgba(227, 227, 227, 0.985),rgba(198, 198, 198, 0.793));
+    background-image: linear-gradient(-45deg, hsl(0, 0%, 84%), rgb(255, 255, 255), rgb(208, 208, 208)) !important;
     animation: bg-color-animation 2s ease infinite;
     background-size: 400%;
-  }
-  
-  @keyframes bg-color-animation {
+}
+
+@keyframes bg-color-animation {
     0% {
-        background-position: left ; 
-      }
-      50% {
-        background-position: right ; 
-      }
-      100% {
-        background-position: left ; 
-      }
-  }
+        background-position: left;
+    }
+
+    50% {
+        background-position: right;
+    }
+
+    100% {
+        background-position: left;
+    }
+}

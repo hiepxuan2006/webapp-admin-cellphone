@@ -87,7 +87,7 @@ export const OrderBody = ({ orders = [], loading }) => {
           )
         })
       ) : (
-        <TableLoading columnQuantity={7} />
+        <TableLoading columnQuantity={8} />
       )}
       {itemOrder && (
         <Modal size="lg" show={show} onHide={handleClose}>

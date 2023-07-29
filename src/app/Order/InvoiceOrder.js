@@ -19,7 +19,7 @@ export const InvoiceOrder = ({ order = {} }) => {
     return lastThreeDigits + maskedDigits
   }
   return (
-    <div className="" onClick={handlePrint}>
+    <div className="OrderPrintInvoice" onClick={handlePrint}>
       <FontAwesomeIcon className=" text-warning" icon={faPrint} />
       <p>Print invoice</p>
       <div style={{ display: "none" }}>
