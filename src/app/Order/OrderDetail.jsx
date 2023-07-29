@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCalendarDay } from "@fortawesome/free-solid-svg-icons"
 import { toastAlert } from "../../helpers/toast"
 import queryString from "query-string"
+import { InvoiceOrder } from "./InvoiceOrder"
 
 export const OrderDetail = () => {
   const [order, setOrder] = useState("")
@@ -64,6 +65,10 @@ export const OrderDetail = () => {
                     <FontAwesomeIcon icon={faCalendarDay} />
                     <p>{moment(order.order_at).format("LTS L")}</p>
                   </div>
+                  <div className="InvoiceOrder">
+                    <InvoiceOrder order={order} />
+                  </div>
+                  <div className="OrderAll">All order</div>
                 </div>
                 <span>Payment type : {order.payment_type}</span>
                 <div className="ContentOrder mt-5">
