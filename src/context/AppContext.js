@@ -30,11 +30,14 @@ const AppContext = (props) => {
     } catch (error) {
       setLoading(false)
       toastAlert(error)
+      setIsLogin(false)
+      toastAlert("error", error.message)
+      navigate("/sign-in")
     }
   }
   useEffect(() => {
     if (isLogin) _requestLogin()
-  }, [])
+  }, [isLogin])
   const value = {
     isCollapsed,
     setIsCollapsed,

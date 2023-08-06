@@ -2,9 +2,7 @@ import _ from "lodash"
 import { useCallback, useEffect, useState } from "react"
 import { Button, Col, Form, Row } from "react-bootstrap"
 import { useDropzone } from "react-dropzone"
-import Select from "react-select"
 import { TextEditor } from "../../../Components/TextEditor"
-import { LoadingProcess } from "../../../Components/loading/LoadingProcess"
 import { EditorCk } from "../../../Components/textEditorCk/EditorCk"
 import generateVariants from "../../../helpers/generateVariants"
 import { toastAlert } from "../../../helpers/toast"
@@ -17,7 +15,6 @@ import { CategoryProduct } from "./CategoryProduct"
 import { CreateProductRight } from "./CreateProductRight"
 import ProductAttributesList from "./attributes/ProductAttributesList"
 import VariantsTable from "./variants/VariantsTable"
-import { Specification } from "./Specification"
 
 const CreateProduct = () => {
   const [attributes, setAttributes] = useState([])
@@ -169,6 +166,7 @@ const CreateProduct = () => {
       description,
       salientFeatures,
       product_class,
+      specification: specifi,
     }
     if (!name) err.name = "Vui lòng nhập tên sản phẩm"
     if (!price) err.price = "Vui lòng nhập giá sản phẩm"
@@ -209,6 +207,7 @@ const CreateProduct = () => {
       toastAlert("error", "Thất bại")
       throw new Error(messageCre)
     }
+    console.log(newProduct)
     setLoading(false)
     toastAlert("success", "Thành công")
     window.location.reload()
@@ -424,7 +423,9 @@ const CreateProduct = () => {
       </Row>
       <div className="SectionInner FooterCreate">
         <div className="">
-          <button onClick={() => handleSubmit()}>Tạo Sản phẩm</button>
+          <button disabled={loading} onClick={() => handleSubmit()}>
+            Tạo Sản phẩm
+          </button>
         </div>
       </div>
     </div>

@@ -25,9 +25,7 @@ const VariantsTable = (props) => {
               })}
               <th className="col-2 SKU">SKU</th>
               <th className="col-2 RetailPrice">Giá (USD)</th>
-              <th className="col-2 Promotion">Khuyến mãi</th>
               <th className="col-2 Promotion">Số lượng</th>
-              <th className="col-2 MarkDefault">Thông số</th>
             </tr>
           </thead>
 

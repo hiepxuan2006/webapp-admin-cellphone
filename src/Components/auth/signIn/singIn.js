@@ -17,8 +17,9 @@ const SignIn = () => {
     email: "hiepxuan2006@gmail.com",
     password: "Hiepxuan98@",
   })
+  const [loading, setLoading] = useState(false)
 
-  const { loading } = useContext(DataContext)
+  // const { loading } = useContext(DataContext)
   const navigate = useNavigate()
 
   const { email, password } = valueSignIn
@@ -28,26 +29,31 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    const params = { email, password }
-    const { success, message, data } = await loginAccount(params)
-
-    if (!success) {
-      toastAlert("error", message)
-      throw new Error(message)
+    try {
+      const params = { email, password }
+      setLoading(true)
+      const { success, message, data } = await loginAccount(params)
+      setLoading(false)
+      if (!success) {
+        toastAlert("error", message)
+        throw new Error(message)
+      }
+      setLocalData("access_token", data.access_token)
+      setLocalData("user", data.user)
+      setLocalData("roles", data.roles)
+      setIsLogin(true)
+      toastAlert("success", "success")
+      navigate("/")
+    } catch (error) {
+      toastAlert("error", error.message)
+      setLoading(false)
     }
-    setLocalData("access_token", data.access_token)
-    setLocalData("user", data.user)
-    setLocalData("roles", data.roles)
-    setIsLogin(true)
-    toastAlert("success", "success")
-    navigate("/")
   }
   if (isLogin) {
     navigate("/")
     return null
   }
-  if (loading) return <LoadingProcess />
+  // if (loading) return <LoadingProcess />
   return (
     <div className="Sign-in" style={{ backgroundImage: `url(${bg})` }}>
       <div className="SignInInner">
@@ -105,7 +111,13 @@ const SignIn = () => {
           </div>
           <div className="mb-3 d-flex">
             <button type="submit" className="btn btn-primary ButtonSubmit">
-              Sign In
+              {loading ? (
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              ) : (
+                "Sign In"
+              )}
             </button>
           </div>
         </form>

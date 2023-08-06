@@ -17,9 +17,7 @@ class VariantRow extends Component {
         <VariantFromAttributes {...this.props} />
         <VariantSKU {...this.props} />
         <VariantRetailPrice {...this.props} />
-        <Promotion {...this.props} />
         <Quantity {...this.props} />
-        <Technique {...this.props} />
       </tr>
     )
   }

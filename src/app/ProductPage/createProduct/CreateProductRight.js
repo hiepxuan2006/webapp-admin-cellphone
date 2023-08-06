@@ -1,11 +1,10 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Form, FormText } from "react-bootstrap"
-import { Input } from "reactstrap"
 import Select from "react-select"
+import { Input } from "reactstrap"
 import { getTags } from "../../../services/api/productService"
-import { useEffect } from "react"
 import { Specification } from "./Specification"
 export const CreateProductRight = ({
   tags,
@@ -116,11 +115,10 @@ export const CreateProductRight = ({
         </Form>
       </div>
       <div className="SectionInner">
-        <h1>Khuyến mãi</h1>
+        <h1>Giá khuyến mãi</h1>
         <div className="d-flex align-items-center gap-3">
           <div className={"d-flex align-items-center"}>
             <Input className="me-2" onChange={onChangeSale} type="number" />
-            <p>%</p>
           </div>
         </div>
       </div>

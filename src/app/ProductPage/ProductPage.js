@@ -24,6 +24,7 @@ const ProductContainer = () => {
   const [limit, setLimit] = useState(10)
   const [title, setTitle] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [category, setCategory] = useState(null)
   const [categories, setCategories] = useState([])
   const [productChose, setProductChose] = useState([])
   const [isReload, setReload] = useState(false)
@@ -31,7 +32,7 @@ const ProductContainer = () => {
 
   const _getProducts = async () => {
     try {
-      const params = { page, limit, title }
+      const params = { page, limit, title, category }
       setLoading(true)
       const paramString = queryString.stringify(params, {
         skipNull: true,
@@ -59,7 +60,7 @@ const ProductContainer = () => {
   }, [])
   useEffect(() => {
     _getProducts()
-  }, [page, limit, title, isReload])
+  }, [page, limit, title, isReload, category])
   const _handleChangePage = (page) => {
     setPage(page)
   }
@@ -68,6 +69,9 @@ const ProductContainer = () => {
     setLimit(e.target.value)
   }
 
+  const handleChangeCategory = (e) => {
+    setCategory(e.target.value)
+  }
   const onChangeSearch = (e) => {
     if (timer) clearTimeout(timer)
     timer = setTimeout(() => {
@@ -95,7 +99,7 @@ const ProductContainer = () => {
           <Link to={"/a/admin/key_word"}>
             <button className="px-2">Key word</button>
           </Link>
-          <Link to={"create"}>
+          <Link to={"/a/admin/product/create"}>
             <button className="px-2">Create Product</button>
           </Link>
         </div>
@@ -134,7 +138,7 @@ const ProductContainer = () => {
             </div>
             <div className="TableLength me-3 d-flex align-items-center justify-content-center">
               <h3>Danh mục</h3>
-              <select className="ms-2 px-4">
+              <select onChange={handleChangeCategory} className="ms-2 px-4">
                 <option value="" defaultChecked>
                   Chọn danh mục
                 </option>
