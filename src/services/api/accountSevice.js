@@ -1,26 +1,29 @@
 import createAPIServices from "./createApiServices"
 
-const baseUrl = `${process.env.REACT_APP_BASE_URL}/account`
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_BASE_URL
+    : process.env.REACT_APP_BASE_DEV
 
 const api = createAPIServices({ baseUrl })
 
 export const getAccount = () => {
   return api.makeAuthRequest({
-    url: "/get-account",
+    url: "/account/get-account",
     method: "get",
   })
 }
 
 export const requestLogin = () => {
   return api.makeAuthRequest({
-    url: "/admin/secret",
+    url: "/account/admin/secret",
     method: "get",
   })
 }
 
 export const loginAccount = (data) => {
   return api.makeAuthRequest({
-    url: "/admin/login",
+    url: "/account/admin/login",
     method: "post",
     data,
   })
@@ -28,14 +31,14 @@ export const loginAccount = (data) => {
 
 export const getListAccount = (data) => {
   return api.makeAuthRequest({
-    url: `/get-account?${data}`,
+    url: `/account/get-account?${data}`,
     method: "get",
   })
 }
 
 export const createAccount = (data) => {
   return api.makeAuthRequest({
-    url: "/create-account",
+    url: "/account/create-account",
     method: "post",
     data,
   })
@@ -43,7 +46,7 @@ export const createAccount = (data) => {
 
 export const getDetailAccount = (params) => {
   return api.makeAuthRequest({
-    url: `/get-detail-account?id=${params}`,
+    url: `/account/get-detail-account?id=${params}`,
     method: "get",
   })
 }

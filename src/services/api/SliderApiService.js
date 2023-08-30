@@ -1,11 +1,14 @@
 import createAPIServices from "./createApiServices"
 
-const baseUrl = `${process.env.REACT_APP_BASE_URL}/slider`
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_BASE_URL
+    : process.env.REACT_APP_BASE_DEV
 
 const api = createAPIServices({ baseUrl })
 export const createSlider = (data) => {
   return api.makeRequest({
-    url: "/create-slider",
+    url: "/slider/create-slider",
     method: "post",
     data: data,
   })
@@ -13,21 +16,21 @@ export const createSlider = (data) => {
 
 export const getSlider = (params) => {
   return api.makeRequest({
-    url: `/get-sliders?${params}`,
+    url: `/slider/get-sliders?${params}`,
     method: "get",
   })
 }
 
 export const getSliderById = (id) => {
   return api.makeRequest({
-    url: `/get-slider/${id}`,
+    url: `/slider/get-slider/${id}`,
     method: "get",
   })
 }
 
 export const deletedSlider = (id) => {
   return api.makeRequest({
-    url: `/delete-slider/${id}`,
+    url: `/slider/delete-slider/${id}`,
     method: "delete",
   })
 }

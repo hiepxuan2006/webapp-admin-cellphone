@@ -1,19 +1,22 @@
 import createAPIServices from "./createApiServices"
 
-const baseUrl = `${process.env.REACT_APP_BASE_URL}/category`
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_BASE_URL
+    : process.env.REACT_APP_BASE_DEV
 
 const api = createAPIServices({ baseUrl })
 
 export const getCategories = () => {
   return api.makeRequest({
-    url: "/get-categories",
+    url: "/category/get-categories",
     method: "get",
   })
 }
 
 export const createCategory = (data) => {
   return api.makeRequest({
-    url: "create-category",
+    url: "/categorycreate-category",
     method: "post",
     data,
   })
@@ -21,27 +24,27 @@ export const createCategory = (data) => {
 
 export const getCategoriesById = (id) => {
   return api.makeRequest({
-    url: `/get-category/${id}`,
+    url: `/category/get-category/${id}`,
     method: "get",
   })
 }
 
 export const getCategoryChildren = (id) => {
   return api.makeRequest({
-    url: `/get-category-children/${id}`,
+    url: `/category/get-category-children/${id}`,
     method: "get",
   })
 }
 export const getCategoryParent = (id) => {
   return api.makeRequest({
-    url: `/get-category-parent`,
+    url: `/category/get-category-parent`,
     method: "get",
   })
 }
 
 export const deleteCategory = (id) => {
   return api.makeRequest({
-    url: `/delete-category/${id}`,
+    url: `/category/delete-category/${id}`,
     method: "delete",
   })
 }

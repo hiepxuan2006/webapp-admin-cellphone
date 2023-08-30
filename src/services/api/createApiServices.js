@@ -61,7 +61,10 @@ const createAPIServices = (_options = {}) => {
     makeAuthRequest: _makeAuthRequest(instance),
   }
 }
-const baseUrl = `${process.env.REACT_APP_BASE_URL}`
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_BASE_URL
+    : process.env.REACT_APP_BASE_DEV
 const api = createAPIServices({ baseUrl })
 export const uploadImage = (data, path) => {
   return api.makeRequest({

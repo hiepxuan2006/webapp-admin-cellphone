@@ -1,12 +1,15 @@
 import createAPIServices from "./createApiServices"
 
-const baseUrl = `${process.env.REACT_APP_BASE_URL}/product`
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_BASE_URL
+    : process.env.REACT_APP_BASE_DEV
 
 const api = createAPIServices({ baseUrl })
 
 export const createProduct = (data) => {
-  return api.makeRequest({
-    url: "/create-product",
+  return api.makeAuthRequest({
+    url: "/product/create-product",
     method: "post",
     data: data,
   })
@@ -14,28 +17,28 @@ export const createProduct = (data) => {
 
 export const getProducts = (params) => {
   return api.makeRequest({
-    url: `/get-products?${params}`,
+    url: `/product/get-products?${params}`,
     method: "get",
   })
 }
 
 export const deleteProducts = (params) => {
   return api.makeRequest({
-    url: `/delete-product/${params}`,
+    url: `/product/delete-product/${params}`,
     method: "delete",
   })
 }
 
 export const getListProduct = (data) => {
   return api.makeRequest({
-    url: "/search-product",
+    url: "/product/search-product",
     method: "post",
     data: data,
   })
 }
 export const relationProduct = (data) => {
   return api.makeRequest({
-    url: "/relation-product",
+    url: "/product/relation-product",
     method: "post",
     data: data,
   })
@@ -43,7 +46,7 @@ export const relationProduct = (data) => {
 // ////////
 export const createKeyWord = (data) => {
   return api.makeRequest({
-    url: `/key_word/create_key`,
+    url: `/product/key_word/create_key`,
     method: "post",
     data,
   })
@@ -51,7 +54,7 @@ export const createKeyWord = (data) => {
 
 export const getTags = (params) => {
   return api.makeRequest({
-    url: `/key_word/get_key_words`,
+    url: `/product/key_word/get_key_words`,
     method: "get",
   })
 }
@@ -59,7 +62,7 @@ export const getTags = (params) => {
 export const changeStatusSpecial = (params) => {
   const { id, status } = params
   return api.makeAuthRequest({
-    url: `/change-status-special?id=${id}&status=${status}`,
+    url: `/product/change-status-special?id=${id}&status=${status}`,
     method: "get",
   })
 }

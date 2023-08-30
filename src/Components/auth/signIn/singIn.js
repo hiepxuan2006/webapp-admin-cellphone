@@ -110,7 +110,11 @@ const SignIn = () => {
             </label>
           </div>
           <div className="mb-3 d-flex">
-            <button type="submit" className="btn btn-primary ButtonSubmit">
+            <button
+              type="submit"
+              disabled={loading}
+              className="btn btn-primary ButtonSubmit"
+            >
               {loading ? (
                 <div class="spinner-border" role="status">
                   <span class="visually-hidden">Loading...</span>
